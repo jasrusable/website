@@ -2,7 +2,6 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 import Me from "../images/me.jpeg";
-import Falcon9 from "../images/falcon9.jpeg";
 
 const Home: NextPage = () => {
   return (
@@ -41,6 +40,10 @@ const Home: NextPage = () => {
                     title: "LinkedIn",
                     href: "https://www.linkedin.com/in/jason-david-russell/",
                   },
+                  {
+                    title: "GitHub",
+                    href: "https://github.com/jasrusable",
+                  },
                 ].map(({ title, href }) => {
                   return (
                     <li key={title}>
@@ -54,15 +57,6 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div style={{ height: "100vh", position: "relative" }}>
-        <Image
-          layout="fill"
-          objectFit="cover"
-          src={Falcon9}
-          alt="Picture of Falcon 9 launch"
-          quality={100}
-        />
       </div>
     </div>
   );
