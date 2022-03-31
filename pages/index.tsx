@@ -9,11 +9,12 @@ const Home: NextPage = () => {
       <div style={{ display: "flex", height: "100vh" }}>
         <div style={{ flexBasis: "50%", position: "relative" }}>
           <Image
+            priority
+            quality={100}
             layout="fill"
             objectFit="cover"
             src={Me}
             alt="Picture of Jason"
-            quality={100}
           />
         </div>
         <div style={{ flexBasis: "50%" }}>
