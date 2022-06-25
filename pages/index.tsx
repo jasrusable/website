@@ -3,6 +3,26 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import Me from "../images/me.png";
 import { NextSeo } from "next-seo";
+import { useEffect, useState } from "react";
+
+const useMediaQuery = (query: string) => {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+
+    if (media.matches !== matches) {
+      setMatches(media.matches);
+    }
+
+    const listener = () => setMatches(media.matches);
+    window.addEventListener("resize", listener);
+
+    return () => window.removeEventListener("resize", listener);
+  }, [matches, query]);
+
+  return matches;
+};
 
 const copy = `
   I'm a senior software engineer, team lead and system architect
@@ -10,10 +30,14 @@ const copy = `
 `;
 
 const Home: NextPage = () => {
+  const isDesktop = useMediaQuery("(min-width: 560px)");
+
   return (
     <>
       <NextSeo title="Jason Russell" description={copy} />
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div
+        style={{ display: "flex", flexDirection: isDesktop ? "row" : "column" }}
+      >
         <Image priority quality={100} src={Me} alt="Picture of Jason" />
         <div
           style={{
