@@ -74,8 +74,8 @@ const Home: NextPage = () => {
               }}
             >
               <p>
-                I'm a bootstrapped startup founder and fractional CTO and
-                freelance software engineer. I'm currently bootstrapping{" "}
+                I'm a startup founder, fractional CTO and freelance software
+                engineer. I'm currently bootstrapping{" "}
                 <a
                   href="https://finwiseapp.io"
                   target="_blank"
@@ -84,7 +84,7 @@ const Home: NextPage = () => {
                   FinWise
                 </a>{" "}
                 and working as a fractional CTO and part-time software engineer
-                for high growth tech startups.
+                for high growth tech businesses.
               </p>
               <div
                 style={{
