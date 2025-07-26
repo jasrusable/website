@@ -48,7 +48,7 @@ const Home: NextPage = () => {
               alt="Picture of Jason"
               className="profile-image"
               style={{
-                borderRadius: "28px",
+                borderRadius: "20px",
                 width: "100%",
                 height: "auto",
               }}
@@ -101,14 +101,7 @@ const Home: NextPage = () => {
                   rel="noopener noreferrer"
                   style={{
                     color: "var(--link-color)",
-                    transition: "color 0.2s ease",
                   }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "var(--link-hover-email)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "var(--link-color)")
-                  }
                   title="Email"
                 >
                   <Mail size={24} />
@@ -119,14 +112,7 @@ const Home: NextPage = () => {
                   rel="noopener noreferrer"
                   style={{
                     color: "var(--link-color)",
-                    transition: "color 0.2s ease",
                   }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "var(--link-hover-twitter)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "var(--link-color)")
-                  }
                   title="X (Twitter)"
                 >
                   <FaXTwitter size={24} />
@@ -137,14 +123,7 @@ const Home: NextPage = () => {
                   rel="noopener noreferrer"
                   style={{
                     color: "var(--link-color)",
-                    transition: "color 0.2s ease",
                   }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "var(--link-hover-linkedin)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "var(--link-color)")
-                  }
                   title="LinkedIn"
                 >
                   <FaLinkedin size={24} />
@@ -155,14 +134,7 @@ const Home: NextPage = () => {
                   rel="noopener noreferrer"
                   style={{
                     color: "var(--link-color)",
-                    transition: "color 0.2s ease",
                   }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "var(--link-hover-github)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "var(--link-color)")
-                  }
                   title="GitHub"
                 >
                   <FaGithub size={24} />
