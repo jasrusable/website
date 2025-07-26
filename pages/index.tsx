@@ -5,11 +5,8 @@ import Jason from "../images/jason.png";
 import { NextSeo } from "next-seo";
 import { MapPin, Mail } from "lucide-react";
 import { FaXTwitter, FaLinkedin, FaGithub } from "react-icons/fa6";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 
 const Home: NextPage = () => {
-  const { isMobile } = useMediaQuery();
-
   return (
     <>
       <NextSeo
@@ -34,8 +31,6 @@ const Home: NextPage = () => {
             gap: 20,
             maxWidth: "1200px",
             width: "100%",
-            padding: isMobile ? "16px" : 30,
-            paddingTop: isMobile ? "40px" : "100px",
           }}
         >
           <div
@@ -51,9 +46,9 @@ const Home: NextPage = () => {
               quality={100}
               src={Jason}
               alt="Picture of Jason"
+              className="profile-image"
               style={{
                 borderRadius: "28px",
-                maxWidth: isMobile ? "200px" : "300px",
                 width: "100%",
                 height: "auto",
               }}
@@ -69,7 +64,9 @@ const Home: NextPage = () => {
               width: "100%",
             }}
           >
-            <h1 style={{ textAlign: "center", fontSize: isMobile ? "32px" : "38px" }}>I'm Jason Russell</h1>
+            <h1 className="main-heading" style={{ textAlign: "center" }}>
+              I'm Jason Russell
+            </h1>
             <div
               style={{
                 maxWidth: "720px",
@@ -106,8 +103,12 @@ const Home: NextPage = () => {
                     color: "var(--link-color)",
                     transition: "color 0.2s ease",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--link-hover-email)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--link-color)")}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--link-hover-email)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "var(--link-color)")
+                  }
                   title="Email"
                 >
                   <Mail size={24} />
@@ -120,8 +121,12 @@ const Home: NextPage = () => {
                     color: "var(--link-color)",
                     transition: "color 0.2s ease",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--link-hover-twitter)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--link-color)")}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--link-hover-twitter)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "var(--link-color)")
+                  }
                   title="X (Twitter)"
                 >
                   <FaXTwitter size={24} />
@@ -134,8 +139,12 @@ const Home: NextPage = () => {
                     color: "var(--link-color)",
                     transition: "color 0.2s ease",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--link-hover-linkedin)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--link-color)")}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--link-hover-linkedin)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "var(--link-color)")
+                  }
                   title="LinkedIn"
                 >
                   <FaLinkedin size={24} />
@@ -148,8 +157,12 @@ const Home: NextPage = () => {
                     color: "var(--link-color)",
                     transition: "color 0.2s ease",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--link-hover-github)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--link-color)")}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--link-hover-github)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "var(--link-color)")
+                  }
                   title="GitHub"
                 >
                   <FaGithub size={24} />
