@@ -1,9 +1,40 @@
+// Light theme (default)
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --text-secondary: #666666;
+  --link-color: #333333;
+  --link-hover-email: #0066cc;
+  --link-hover-twitter: #000000;
+  --link-hover-linkedin: #0077b5;
+  --link-hover-github: #24292e;
+  --header-border: #e5e5e5;
+  --button-bg: #f5f5f5;
+  --button-hover-bg: #e5e5e5;
+}
+
+// Dark theme
+:root.dark {
+  --bg-color: #1a1a1a;
+  --text-color: #e5e5e5;
+  --text-secondary: #a0a0a0;
+  --link-color: #e5e5e5;
+  --link-hover-email: #4da6ff;
+  --link-hover-twitter: #ffffff;
+  --link-hover-linkedin: #0e9cd9;
+  --link-hover-github: #ffffff;
+  --header-border: #333333;
+  --button-bg: #2a2a2a;
+  --button-hover-bg: #3a3a3a;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: white;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   margin: 0;
   font-size: 17px;
   line-height: 1.5;
@@ -11,6 +42,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .contact-link:hover {
@@ -20,4 +54,5 @@ body {
 h1 {
   font-size: 38px;
   font-weight: 600;
+  color: var(--text-color);
 }

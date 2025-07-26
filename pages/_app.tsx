@@ -4,6 +4,9 @@ import Head from "next/head";
 import { Open_Sans } from "next/font/google";
 import { ClickToComponent } from "click-to-react-component";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { useDarkMode } from "../hooks/useDarkMode";
+import { useEffect } from "react";
+import Header from "../components/Header";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -22,6 +25,19 @@ const openSans = Open_Sans({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const { isDarkMode } = useDarkMode();
+
+  useEffect(() => {
+    // Apply dark mode class to document root
+    if (typeof document !== 'undefined') {
+      if (isDarkMode) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+  }, [isDarkMode]);
+
   return (
     <>
       {process.env.NODE_ENV !== "production" && <ClickToComponent />}

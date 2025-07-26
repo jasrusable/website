@@ -103,11 +103,11 @@ const Home: NextPage = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    color: "#333",
+                    color: "var(--link-color)",
                     transition: "color 0.2s ease",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#0066cc")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "#333")}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--link-hover-email)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--link-color)")}
                   title="Email"
                 >
                   <Mail size={24} />
@@ -117,11 +117,11 @@ const Home: NextPage = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    color: "#333",
+                    color: "var(--link-color)",
                     transition: "color 0.2s ease",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#000")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "#333")}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--link-hover-twitter)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--link-color)")}
                   title="X (Twitter)"
                 >
                   <FaXTwitter size={24} />
@@ -131,11 +131,11 @@ const Home: NextPage = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    color: "#333",
+                    color: "var(--link-color)",
                     transition: "color 0.2s ease",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#0077b5")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "#333")}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--link-hover-linkedin)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--link-color)")}
                   title="LinkedIn"
                 >
                   <FaLinkedin size={24} />
@@ -145,11 +145,11 @@ const Home: NextPage = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    color: "#333",
+                    color: "var(--link-color)",
                     transition: "color 0.2s ease",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#24292e")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "#333")}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--link-hover-github)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--link-color)")}
                   title="GitHub"
                 >
                   <FaGithub size={24} />
@@ -162,7 +162,7 @@ const Home: NextPage = () => {
                   justifyContent: "center",
                   gap: "8px",
                   marginTop: "32px",
-                  color: "#666",
+                  color: "var(--text-secondary)",
                   fontSize: "0.95em",
                 }}
               >
