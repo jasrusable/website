@@ -5,6 +5,7 @@ import Jason from "../images/jason.png";
 import { NextSeo } from "next-seo";
 import { MapPin, Mail } from "lucide-react";
 import { FaXTwitter, FaLinkedin, FaGithub } from "react-icons/fa6";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -84,6 +85,24 @@ const Home: NextPage = () => {
                 and working as a fractional CTO and part-time software engineer
                 for high growth tech businesses.
               </p>
+              <div
+                style={{
+                  marginTop: "20px",
+                  marginBottom: "4px",
+                }}
+              >
+                <Link
+                  href="/hire-me"
+                  style={{
+                    color: "var(--link-color)",
+                    textDecoration: "underline",
+                    fontWeight: "500",
+                    transition: "opacity 0.2s ease",
+                  }}
+                >
+                  Available for hire →
+                </Link>
+              </div>
               <div
                 style={{
                   display: "flex",
