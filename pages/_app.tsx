@@ -21,6 +21,7 @@ const openSans = Open_Sans({
   ],
   preload: true,
   variable: "--font-open-sans",
+  adjustFontFallback: false, // Prevent layout shifts from font metric adjustments
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -57,9 +58,12 @@ function MyApp({ Component, pageProps }: AppProps) {
               (function() {
                 try {
                   var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                  var html = document.documentElement;
                   if (darkQuery.matches) {
-                    document.documentElement.classList.add('dark');
+                    html.classList.add('dark');
                   }
+                  // Ensure no layout shift by immediately setting the initial state
+                  html.style.visibility = 'visible';
                 } catch (e) {}
               })();
             `,
@@ -84,6 +88,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         * {
           font-family: inherit;
+        }
+
+        /* Prevent FOUC (Flash of Unstyled Content) */
+        html {
+          visibility: hidden;
+        }
+
+        html.wf-active,
+        html.wf-inactive {
+          visibility: visible;
         }
       `}</style>
       <div

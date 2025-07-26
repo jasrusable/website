@@ -36,6 +36,8 @@ html {
   background-color: var(--bg-color);
   color-scheme: light;
   transition: background-color 0.3s ease;
+  // Prevent layout shifts and scrollbar flickering
+  scrollbar-gutter: stable; // Reserve space for scrollbar
 }
 
 html.dark {
@@ -55,6 +57,12 @@ body {
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+  // Prevent content jumping during font loading
+  font-display: swap;
+  // Ensure consistent layout during loading
+  min-height: 100vh;
+  // Prevent horizontal scrollbar
+  overflow-x: hidden;
 }
 
 .contact-link:hover {
@@ -65,6 +73,8 @@ h1 {
   font-size: 38px;
   font-weight: 600;
   color: var(--text-color);
+  // Prevent layout shift during font loading
+  font-display: swap;
 }
 
 /* Mobile-specific styles */
@@ -75,6 +85,8 @@ h1 {
 
 .profile-image {
   max-width: 300px;
+  // Prevent layout shift during image loading
+  height: auto;
 }
 
 .main-heading {
