@@ -51,6 +51,20 @@ function MyApp({ Component, pageProps }: AppProps) {
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                  if (darkQuery.matches) {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
       </Head>
       <style jsx global>{`
         :root {
