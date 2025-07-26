@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Jason Russell</title>
         <link rel="shortcut icon" href="/favicon.png" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width, viewport-fit=cover" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
