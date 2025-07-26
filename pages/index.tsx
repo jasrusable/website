@@ -5,8 +5,11 @@ import Jason from "../images/jason.png";
 import { NextSeo } from "next-seo";
 import { MapPin, Mail } from "lucide-react";
 import { FaXTwitter, FaLinkedin, FaGithub } from "react-icons/fa6";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 const Home: NextPage = () => {
+  const { isMobile } = useMediaQuery();
+
   return (
     <>
       <NextSeo
@@ -32,7 +35,7 @@ const Home: NextPage = () => {
             maxWidth: "1200px",
             width: "100%",
             padding: 30,
-            paddingTop: "100px",
+            paddingTop: isMobile ? "40px" : "100px",
           }}
         >
           <div
@@ -50,7 +53,7 @@ const Home: NextPage = () => {
               alt="Picture of Jason"
               style={{
                 borderRadius: "28px",
-                maxWidth: "300px",
+                maxWidth: isMobile ? "200px" : "300px",
                 width: "100%",
                 height: "auto",
               }}
@@ -66,7 +69,7 @@ const Home: NextPage = () => {
               width: "100%",
             }}
           >
-            <h1 style={{ textAlign: "center" }}>I'm Jason Russell</h1>
+            <h1 style={{ textAlign: "center", fontSize: isMobile ? "32px" : "38px" }}>I'm Jason Russell</h1>
             <div
               style={{
                 maxWidth: "720px",
