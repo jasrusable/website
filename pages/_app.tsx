@@ -6,6 +6,8 @@ import { ClickToComponent } from "click-to-react-component";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { useDarkMode } from "../hooks/useDarkMode";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { initMixpanel, trackPageView } from "../src/utils/mixpanel";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -26,6 +28,12 @@ const openSans = Open_Sans({
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { isDarkMode } = useDarkMode();
+  const router = useRouter();
+
+  useEffect(() => {
+    // Initialize Mixpanel on app start
+    initMixpanel();
+  }, []);
 
   useEffect(() => {
     // Apply dark mode class to document root
@@ -37,6 +45,23 @@ function MyApp({ Component, pageProps }: AppProps) {
       }
     }
   }, [isDarkMode]);
+
+  useEffect(() => {
+    // Track page views on route changes
+    const handleRouteChange = (url: string) => {
+      trackPageView(url);
+    };
+
+    // Track initial page view
+    trackPageView(router.asPath);
+
+    // Listen to route changes
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router]);
 
   return (
     <>

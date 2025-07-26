@@ -6,8 +6,46 @@ import { NextSeo } from "next-seo";
 import { MapPin, Mail } from "lucide-react";
 import { FaXTwitter, FaLinkedin, FaGithub } from "react-icons/fa6";
 import Link from "next/link";
+import { useMixpanel } from "../src/hooks/useMixpanel";
+import { MIXPANEL_EVENTS, LINK_TYPES, SOCIAL_PLATFORMS } from "../src/types/analytics";
 
 const Home: NextPage = () => {
+  const { trackEvent } = useMixpanel();
+
+  const handleSocialClick = (platform: string, url: string) => {
+    trackEvent(MIXPANEL_EVENTS.LINK_CLICKED, {
+      link_type: LINK_TYPES.SOCIAL,
+      link_name: platform,
+      url,
+      platform: platform as any,
+      target: '_blank',
+      position: 'social_icons',
+      source: 'homepage',
+    });
+  };
+
+  const handleFinWiseClick = () => {
+    trackEvent(MIXPANEL_EVENTS.LINK_CLICKED, {
+      link_type: LINK_TYPES.EXTERNAL,
+      link_name: 'FinWise',
+      url: 'https://finwiseapp.io',
+      target: '_blank',
+      position: 'bio_text',
+      source: 'homepage',
+    });
+  };
+
+  const handleHireMeClick = () => {
+    trackEvent(MIXPANEL_EVENTS.LINK_CLICKED, {
+      link_type: LINK_TYPES.HIRE_ME,
+      link_name: 'Available for hire',
+      url: '/hire-me',
+      target: '_self',
+      position: 'cta_section',
+      source: 'homepage',
+    });
+  };
+
   return (
     <>
       <NextSeo
@@ -79,6 +117,7 @@ const Home: NextPage = () => {
                   href="https://finwiseapp.io"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={handleFinWiseClick}
                 >
                   FinWise
                 </a>{" "}
@@ -99,6 +138,7 @@ const Home: NextPage = () => {
                     fontWeight: "500",
                     transition: "opacity 0.2s ease",
                   }}
+                  onClick={handleHireMeClick}
                 >
                   Available for hire →
                 </Link>
@@ -120,6 +160,7 @@ const Home: NextPage = () => {
                     color: "var(--link-color)",
                   }}
                   title="Email"
+                  onClick={() => handleSocialClick(SOCIAL_PLATFORMS.EMAIL, 'mailto:me@jasonrussell.io')}
                 >
                   <Mail size={24} />
                 </a>
@@ -131,6 +172,7 @@ const Home: NextPage = () => {
                     color: "var(--link-color)",
                   }}
                   title="X (Twitter)"
+                  onClick={() => handleSocialClick(SOCIAL_PLATFORMS.X_TWITTER, 'https://x.com/jasrusable')}
                 >
                   <FaXTwitter size={24} />
                 </a>
@@ -142,6 +184,7 @@ const Home: NextPage = () => {
                     color: "var(--link-color)",
                   }}
                   title="LinkedIn"
+                  onClick={() => handleSocialClick(SOCIAL_PLATFORMS.LINKEDIN, 'https://www.linkedin.com/in/jason-david-russell/')}
                 >
                   <FaLinkedin size={24} />
                 </a>
@@ -153,6 +196,7 @@ const Home: NextPage = () => {
                     color: "var(--link-color)",
                   }}
                   title="GitHub"
+                  onClick={() => handleSocialClick(SOCIAL_PLATFORMS.GITHUB, 'https://github.com/jasrusable')}
                 >
                   <FaGithub size={24} />
                 </a>
