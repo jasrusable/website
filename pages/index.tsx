@@ -34,7 +34,7 @@ const Home: NextPage = () => {
             gap: 20,
             maxWidth: "1200px",
             width: "100%",
-            padding: 30,
+            padding: isMobile ? "16px" : 30,
             paddingTop: isMobile ? "40px" : "100px",
           }}
         >

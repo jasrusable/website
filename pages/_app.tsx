@@ -9,7 +9,16 @@ const openSans = Open_Sans({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "600", "700"],
-  fallback: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+  fallback: [
+    "system-ui",
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "Segoe UI",
+    "Roboto",
+    "sans-serif",
+  ],
+  preload: true,
+  variable: "--font-open-sans",
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -21,13 +30,37 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Jason Russell</title>
         <link rel="shortcut icon" href="/favicon.png" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
       </Head>
       <style jsx global>{`
+        :root {
+          --font-open-sans: ${openSans.style.fontFamily};
+        }
+
         body {
-          font-family: ${openSans.style.fontFamily};
+          font-family:
+            var(--font-open-sans),
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            sans-serif;
+        }
+
+        * {
+          font-family: inherit;
         }
       `}</style>
-      <div className={openSans.className}>
+      <div
+        className={openSans.className}
+        style={{ fontFamily: openSans.style.fontFamily }}
+      >
         <Component {...pageProps} />
       </div>
     </>
