@@ -6,7 +6,6 @@ import { ClickToComponent } from "click-to-react-component";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { useDarkMode } from "../hooks/useDarkMode";
 import { useEffect } from "react";
-import Header from "../components/Header";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
