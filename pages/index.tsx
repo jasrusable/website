@@ -64,9 +64,7 @@ const Home: NextPage = () => {
               width: "100%",
             }}
           >
-            <h1 className="main-heading" style={{ textAlign: "center" }}>
-              I'm Jason Russell
-            </h1>
+            <h1 style={{ textAlign: "center" }}>I'm Jason Russell</h1>
             <div
               style={{
                 maxWidth: "720px",

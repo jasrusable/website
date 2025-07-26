@@ -50,7 +50,7 @@ body {
   margin: 0;
   font-size: 17px;
   line-height: 1.5;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -75,6 +75,7 @@ h1 {
   color: var(--text-color);
   // Prevent layout shift during font loading
   font-display: swap;
+  margin: 12px;
 }
 
 /* Mobile-specific styles */
@@ -89,10 +90,6 @@ h1 {
   height: auto;
 }
 
-.main-heading {
-  font-size: 38px;
-}
-
 @media (max-width: 768px) {
   .layout-container {
     padding: 16px;
@@ -103,7 +100,7 @@ h1 {
     max-width: 200px;
   }
 
-  .main-heading {
+  h1 {
     font-size: 32px;
   }
 }
