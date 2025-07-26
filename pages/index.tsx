@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import Jason from "../images/jason.png";
 import { NextSeo } from "next-seo";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import { MapPin, Mail } from "lucide-react";
 import { FaXTwitter, FaLinkedin, FaGithub } from "react-icons/fa6";
 
