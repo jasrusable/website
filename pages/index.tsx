@@ -1,80 +1,65 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import Jason from "../images/jason.png";
 import { NextSeo } from "next-seo";
+import Jason from "../images/jason.png";
+import CogitoLogo from "../images/cogito-logo.jpg";
+import styles from "./index.module.scss";
+
+const DESCRIPTION =
+  "Jason Russell — busy building trycogito.ai, the AI brain for your business.";
 
 const Home: NextPage = () => {
   return (
     <>
       <NextSeo
         title="Jason Russell"
-        description="Busy building trycogito.ai"
-      />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "100vh",
-          textAlign: "center",
-          padding: "24px",
+        description={DESCRIPTION}
+        openGraph={{
+          title: "Jason Russell",
+          description: DESCRIPTION,
+          type: "website",
+          url: "https://jasonrussell.io",
         }}
-      >
-        <Image
-          priority
-          quality={100}
-          src={Jason}
-          alt="Jason Russell"
-          style={{
-            borderRadius: "50%",
-            width: 160,
-            height: 160,
-            objectFit: "cover",
-            marginBottom: "20px",
-          }}
-        />
-        <p
-          style={{
-            fontSize: "1.2rem",
-            color: "var(--text-secondary)",
-            margin: "0 0 12px",
-            letterSpacing: "0.5px",
-          }}
-        >
-          Hey, I&apos;m Jason — I&apos;m busy building
-        </p>
-        <a
-          href="https://trycogito.ai"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            fontSize: "2.4rem",
-            fontWeight: 700,
-            color: "var(--text-color)",
-            textDecoration: "none",
-            borderBottom: "3px solid var(--text-color)",
-            paddingBottom: "2px",
-            transition: "opacity 0.2s ease",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
-          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-        >
-          trycogito.ai
-        </a>
-        <p
-          style={{
-            marginTop: "20px",
-            fontSize: "1rem",
-            color: "var(--text-secondary)",
-            maxWidth: "380px",
-            lineHeight: 1.6,
-          }}
-        >
-          AI that knows your entire business — ask questions, get answers, take
-          action across all your data and tools.
-        </p>
-      </div>
+        twitter={{ cardType: "summary_large_image" }}
+      />
+      <main className={styles.main}>
+        <section className={styles.stage}>
+          <Image
+            priority
+            quality={100}
+            src={Jason}
+            alt="Jason Russell"
+            className={styles.portrait}
+            sizes="132px"
+          />
+          <p className={styles.eyebrow}>Jason Russell</p>
+          <h1 className={styles.lead}>
+            Hey, I&rsquo;m Jason &mdash; I&rsquo;m busy building
+          </h1>
+          <a
+            href="https://trycogito.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.wordmark}
+            aria-label="trycogito.ai"
+          >
+            <Image
+              src={CogitoLogo}
+              alt=""
+              width={56}
+              height={56}
+              className={styles.logo}
+              priority
+            />
+            <span>trycogito.ai</span>
+          </a>
+          <p className={styles.tagline}>
+            The AI brain for your business. Connects to all your tools, builds
+            organizational memory and self-learns, and helps you and your team
+            work smarter and faster.
+          </p>
+        </section>
+      </main>
     </>
   );
 };

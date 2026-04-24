@@ -1,7 +1,7 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { Open_Sans } from "next/font/google";
+import { Onest } from "next/font/google";
 import { ClickToComponent } from "click-to-react-component";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { useDarkMode } from "../hooks/useDarkMode";
@@ -9,58 +9,35 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { initMixpanel, trackPageView } from "../src/utils/mixpanel";
 
-const openSans = Open_Sans({
+const onest = Onest({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "600", "700"],
-  fallback: [
-    "system-ui",
-    "-apple-system",
-    "BlinkMacSystemFont",
-    "Segoe UI",
-    "Roboto",
-    "sans-serif",
-  ],
+  adjustFontFallback: false,
   preload: true,
-  variable: "--font-open-sans",
-  adjustFontFallback: false, // Prevent layout shifts from font metric adjustments
+  fallback: ["system-ui", "arial"],
+  variable: "--font-sans",
 });
+
+const darkModeInitScript = `(function(){try{if(window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark')}}catch(e){}})();`;
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { isDarkMode } = useDarkMode();
   const router = useRouter();
 
   useEffect(() => {
-    // Initialize Mixpanel on app start
     initMixpanel();
   }, []);
 
   useEffect(() => {
-    // Apply dark mode class to document root
-    if (typeof document !== 'undefined') {
-      if (isDarkMode) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    }
+    if (typeof document === "undefined") return;
+    document.documentElement.classList.toggle("dark", isDarkMode);
   }, [isDarkMode]);
 
   useEffect(() => {
-    // Track page views on route changes
-    const handleRouteChange = (url: string) => {
-      trackPageView(url);
-    };
-
-    // Track initial page view
+    const handleRouteChange = (url: string) => trackPageView(url);
     trackPageView(router.asPath);
-
-    // Listen to route changes
-    router.events.on('routeChangeComplete', handleRouteChange);
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => router.events.off("routeChangeComplete", handleRouteChange);
   }, [router]);
 
   return (
@@ -70,65 +47,32 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Jason Russell</title>
         <link rel="shortcut icon" href="/favicon.png" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width, viewport-fit=cover" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
+        <meta
+          name="viewport"
+          content="initial-scale=1.0, width=device-width, viewport-fit=cover"
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-                  var html = document.documentElement;
-                  if (darkQuery.matches) {
-                    html.classList.add('dark');
-                  }
-                  // Ensure no layout shift by immediately setting the initial state
-                  html.style.visibility = 'visible';
-                } catch (e) {}
-              })();
-            `,
-          }}
+        <meta
+          name="theme-color"
+          content="#ffffff"
+          media="(prefers-color-scheme: light)"
         />
+        <meta
+          name="theme-color"
+          content="#0e0e10"
+          media="(prefers-color-scheme: dark)"
+        />
+        <script dangerouslySetInnerHTML={{ __html: darkModeInitScript }} />
       </Head>
       <style jsx global>{`
         :root {
-          --font-open-sans: ${openSans.style.fontFamily};
+          --font-sans: ${onest.style.fontFamily};
         }
-
         body {
-          font-family:
-            var(--font-open-sans),
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            sans-serif;
-        }
-
-        * {
-          font-family: inherit;
-        }
-
-        /* Prevent FOUC (Flash of Unstyled Content) */
-        html {
-          visibility: hidden;
-        }
-
-        html.wf-active,
-        html.wf-inactive {
-          visibility: visible;
+          font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI",
+            Roboto, sans-serif;
         }
       `}</style>
-      <div
-        className={openSans.className}
-        style={{ fontFamily: openSans.style.fontFamily }}
-      >
+      <div className={onest.variable}>
         <Component {...pageProps} />
       </div>
     </>

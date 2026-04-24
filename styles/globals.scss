@@ -1,106 +1,77 @@
-// Light theme (default)
 :root {
   --bg-color: #ffffff;
-  --text-color: #333333;
-  --text-secondary: #666666;
-  --link-color: #333333;
-  --link-hover-email: #0066cc;
-  --link-hover-twitter: #000000;
-  --link-hover-linkedin: #0077b5;
-  --link-hover-github: #24292e;
-  --header-border: #e5e5e5;
-  --button-bg: #f5f5f5;
-  --button-hover-bg: #e5e5e5;
+  --bg-accent: #fafafa;
+  --text-color: #0e0e10;
+  --text-secondary: #5a5a63;
+  --text-muted: #8a8a94;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --ring-color: rgba(0, 0, 0, 0.06);
+  --shadow-color: rgba(15, 15, 20, 0.18);
+
+  --step-1: 0.8125rem; // 13
+  --step-0: 1rem; // 16
+  --step-2: 1.125rem; // 18
+  --step-3: 1.5rem; // 24
+  --step-4: 2.25rem; // 36
+  --step-5: 3.5rem; // 56
+
+  color-scheme: light;
 }
 
-// Dark theme
 :root.dark {
-  --bg-color: #1a1a1a;
-  --text-color: #e5e5e5;
-  --text-secondary: #a0a0a0;
-  --link-color: #e5e5e5;
-  --link-hover-email: #4da6ff;
-  --link-hover-twitter: #ffffff;
-  --link-hover-linkedin: #0e9cd9;
-  --link-hover-github: #ffffff;
-  --header-border: #333333;
-  --button-bg: #2a2a2a;
-  --button-hover-bg: #3a3a3a;
+  --bg-color: #0e0e10;
+  --bg-accent: #16161a;
+  --text-color: #f3f3f5;
+  --text-secondary: #a8a8b2;
+  --text-muted: #6b6b75;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --ring-color: rgba(255, 255, 255, 0.06);
+  --shadow-color: rgba(0, 0, 0, 0.6);
+
+  color-scheme: dark;
 }
 
 * {
   box-sizing: border-box;
 }
 
-html {
-  background-color: var(--bg-color);
-  color-scheme: light;
-  transition: background-color 0.3s ease;
-  // Prevent layout shifts and scrollbar flickering
-  scrollbar-gutter: stable; // Reserve space for scrollbar
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
-html.dark {
-  color-scheme: dark;
+html {
+  background-color: var(--bg-color);
+  scrollbar-gutter: stable;
 }
 
 body {
+  min-height: 100vh;
   background-color: var(--bg-color);
+  background-image: radial-gradient(
+      1200px 600px at 50% -10%,
+      var(--bg-accent),
+      transparent 60%
+    ),
+    radial-gradient(800px 400px at 100% 100%, var(--bg-accent), transparent 70%);
   color: var(--text-color);
-  margin: 0;
-  font-size: 17px;
-  line-height: 1.5;
-  letter-spacing: 0.4px;
+  font-size: var(--step-0);
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
-  // Prevent content jumping during font loading
-  font-display: swap;
-  // Ensure consistent layout during loading
-  min-height: 100vh;
-  // Prevent horizontal scrollbar
-  overflow-x: hidden;
 }
 
-.contact-link:hover {
-  text-decoration: underline;
+a {
+  color: inherit;
 }
 
-h1 {
-  font-size: 38px;
-  font-weight: 600;
-  color: var(--text-color);
-  // Prevent layout shift during font loading
-  font-display: swap;
-  margin: 12px;
-}
-
-/* Mobile-specific styles */
-.layout-container {
-  padding: 30px;
-  padding-top: 100px;
-}
-
-.profile-image {
-  max-width: 300px;
-  // Prevent layout shift during image loading
-  height: auto;
-}
-
-@media (max-width: 768px) {
-  .layout-container {
-    padding: 16px;
-    padding-top: 40px;
-  }
-
-  .profile-image {
-    max-width: 200px;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
+::selection {
+  background: var(--text-color);
+  color: var(--bg-color);
 }
